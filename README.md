@@ -1,6 +1,8 @@
 # Shopping
 ## 简单介绍
 　　本项目使用Spring+SpringMVC+Hibernate来实现了一个网上商城系统。
+## 运行环境
+    JDK1.7+,Tomcat 8.0或以上,Maven 3.0
 ## 运行
 
 ```shell
@@ -17,7 +19,7 @@ mvn package
 
 # 5.在生成的target目录下即可找到对应的Shopping.war包
 
-# 6.将war包复制到Tomcat目录下的webapps文件夹下，重启Tomcat服务器（需要下载Tomcat，建议版本在7.0以上）
+# 6.将war包复制到Tomcat目录下的webapps文件夹下，重启Tomcat服务器（需要下载Tomcat，版本在8.0或者以上）
 
 # 7.访问 http://localhost:8080/Shopping 来查看效果。（没有任何商品，需要自己手动去添加。注册普通用户，然后在数据库中将用户role字段改为1即可访问控制台页面，进行商品的增加和删除。）
 ```
