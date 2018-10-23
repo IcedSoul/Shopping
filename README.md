@@ -55,4 +55,4 @@ mvn package
 ![控制台2](http://ou7jocypf.bkt.clouddn.com/18-1-7/98806938.jpg)
 
 ## 演示地址
-　　演示网址：http://120.79.92.126/Shopping
+　　演示网址：http://119.23.212.211:8080/Shopping
