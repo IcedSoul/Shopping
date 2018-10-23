@@ -2,6 +2,7 @@
 ## 简单介绍
 　　本项目使用Spring+SpringMVC+Hibernate来实现了一个网上商城系统。
 ## 运行
+
 ```shell
 # 1.执行下面命令将代码下载到本地（需安装git客户端，如果没有安装则在此页面选择Download as zip 方式下载到本地）
 git clone https://github.com/IcedSoul/Shopping.git
