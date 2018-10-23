@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+  
+    <!-- 被扫描的包的路径 -->  
+    <context:component-scan base-package="com.shopping" >
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan> 
+  	
+  	<!-- 开启注解-->
+    <mvc:annotation-driven /> 
+    <mvc:resources location="/static/js/" mapping="/js/**"/>
+    <mvc:resources location="/static/img/" mapping="/img/**"/>
+    <mvc:resources location="/static/css/" mapping="/css/**"/>
+    
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="cacheSeconds" value="0"/>
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJackson2HttpMessageConverter"/>
+				<ref bean="mappingStringHttpMessageConverter"/>
+			</list>
+		</property>
+		<property name="webBindingInitializer" ref="webBindingInitializer">
+		</property>
+	</bean>
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10485760" />
+	</bean>
+
+	<bean id="mappingStringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/plain;charset=UTF-8</value>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="mappingJackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<bean class="org.springframework.http.MediaType">
+					<constructor-arg index="0" value="application"/>
+					<constructor-arg index="1" value="json"/>
+					<constructor-arg index="2" value="UTF-8"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="webBindingInitializer" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+		<property name="conversionService">
+			<bean class="org.springframework.core.convert.support.DefaultConversionService"></bean>
+		</property>
+	</bean>
+	
+    <!-- 添加viewResolver -->  
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">  
+        <property name="viewResolvers">
+        	<list>
+        		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        			<property name="order" value="2"/>
+        			<property name="prefix" value="/WEB-INF/views/" />  
+       				<property name="suffix" value=".jsp" /> 
+        		</bean>
+        	</list>
+        </property>
+         
+    </bean>  
+</beans> 
