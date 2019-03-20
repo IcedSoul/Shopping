@@ -64,32 +64,31 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="opEMII" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationInterceptor" />
 
 	<!--注意！如果service目录变了，需要改这里的内容，否则会报错-->
-	<!--<aop:config proxy-target-class="true">-->
-		<!--<aop:advisor pointcut="execution(public * com.shopping.service.*Service.*(..))" advice-ref="txAdvice"/>-->
-	<!--</aop:config>-->
+	<aop:config proxy-target-class="true">
+		<aop:advisor pointcut="execution(public * com.shopping.service.*Service.*(..))" advice-ref="txAdvice"/>
+		<aop:advisor advice-ref="opEMII" pointcut="execution(public * com.shopping..*.*(..))"/>
+	</aop:config>
 
-	<!--<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>-->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
-	<!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
-		<!--<tx:attributes>-->
-			<!--<tx:method name="get*" read-only="true" propagation="REQUIRED"/>-->
-			<!--<tx:method name="list*" read-only="true" propagation="REQUIRED"/>-->
-			<!--<tx:method name="find*" read-only="true" propagation="REQUIRED"/>-->
-			<!--<tx:method name="save*" propagation="REQUIRED" />-->
-			<!--<tx:method name="delete*" propagation="REQUIRED" />-->
-			<!--<tx:method name="update*" propagation="REQUIRED" />-->
-			<!--<tx:method name="add*" propagation="REQUIRED" />-->
-			<!--<tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>-->
-		<!--</tx:attributes>-->
-	<!--</tx:advice>-->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" propagation="REQUIRED"/>
+			<tx:method name="list*" read-only="true" propagation="REQUIRED"/>
+			<tx:method name="find*" read-only="true" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
 
 	<!-- Kieker配置 -->
 
-	<bean id="opEMII" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationInterceptor" />
-	<aop:config>
-		<aop:advisor advice-ref="opEMII" pointcut="execution(public * com.shopping..*.*(..))"/>
-	</aop:config>
+
     
    </beans>

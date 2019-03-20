@@ -152,6 +152,7 @@
                     registerResult = result.result;
                 },
                 error : function(result) {
+                    layer.close(loading);
                     layer.alert('查询用户错误');
                 }
             });
