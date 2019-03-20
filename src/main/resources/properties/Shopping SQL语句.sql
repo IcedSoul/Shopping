@@ -1,4 +1,4 @@
-create database shopping;
+create database shopping default charset utf8;
 
 use shopping;
 create table user_main(

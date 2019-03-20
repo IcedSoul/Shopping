@@ -71,4 +71,24 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+
+  <!-- 配置Kieker监听 -->
+  <filter>
+    <filter-name>
+      sessionAndTraceRegistrationFilter
+    </filter-name>
+    <filter-class>
+      kieker.monitoring.probe.servlet.SessionAndTraceRegistrationFilter
+    </filter-class>
+    <init-param>
+      <param-name>logFilterExecution</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>sessionAndTraceRegistrationFilter</filter-name>
+    <url-pattern>/∗</url-pattern>
+  </filter-mapping>
+
 </web-app>

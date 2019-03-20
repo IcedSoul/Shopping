@@ -1,0 +1,11 @@
+$0;1553063100962362894;1.13;KIEKER-SINGLETON;icedsoul-PC;1;false;0;NANOSECONDS;0
+$1;1553063104806530976;public java.util.List com.shopping.dao.ProductDaoImplement.getAllProduct();<no-session-id>;2079677865426681857;1553063104619661433;1553063104806320463;icedsoul-PC;1;1
+$1;1553063104806914121;public java.util.List com.shopping.service.ProductServiceImplement.getAllProduct();<no-session-id>;2079677865426681857;1553063104600983780;1553063104806909066;icedsoul-PC;0;0
+$1;1553063150852166282;public java.util.List com.shopping.dao.ProductDaoImplement.getAllProduct();<no-session-id>;2079677865426681858;1553063150844559258;1553063150852160387;icedsoul-PC;1;1
+$1;1553063150852188283;public java.util.List com.shopping.service.ProductServiceImplement.getAllProduct();<no-session-id>;2079677865426681858;1553063150844538558;1553063150852186837;icedsoul-PC;0;0
+$1;1553063160432481192;public java.util.List com.shopping.dao.ProductDaoImplement.getAllProduct();<no-session-id>;2079677865426681859;1553063160428036729;1553063160432475445;icedsoul-PC;1;1
+$1;1553063160432500694;public java.util.List com.shopping.service.ProductServiceImplement.getAllProduct();<no-session-id>;2079677865426681859;1553063160428011391;1553063160432499196;icedsoul-PC;0;0
+$1;1553063163971828101;public com.shopping.entity.Product com.shopping.dao.ProductDaoImplement.getProduct(int);<no-session-id>;2079677865426681860;1553063163878073398;1553063163971822827;icedsoul-PC;1;1
+$1;1553063163971849817;public com.shopping.entity.Product com.shopping.service.ProductServiceImplement.getProduct(int);<no-session-id>;2079677865426681860;1553063163877974705;1553063163971848206;icedsoul-PC;0;0
+$1;1553063168350766452;public com.shopping.entity.User com.shopping.dao.UserDaoImplement.getUser(java.lang.String);<no-session-id>;2079677865426681861;1553063168331354410;1553063168350759612;icedsoul-PC;1;1
+$1;1553063168350831180;public com.shopping.entity.User com.shopping.service.UserServiceImplement.getUser(java.lang.String);<no-session-id>;2079677865426681861;1553063168322279706;1553063168350827822;icedsoul-PC;0;0
