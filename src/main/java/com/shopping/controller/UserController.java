@@ -88,8 +88,9 @@ public class UserController {
             result = "nameExist";
         } else {
             user = userService.getUser(email);
-            if (user != null)
+            if (user != null) {
                 result = "emailExist";
+            }
             else {
                 User user1 = new User();
                 user1.setName(userName);
