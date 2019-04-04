@@ -103,6 +103,13 @@
       <version>2.9.6</version>
     </dependency>
 
+    <dependency>
+      <groupId>net.kieker-monitoring</groupId>
+      <artifactId>kieker</artifactId>
+      <version>1.13</version>
+      <classifier>aspectj</classifier>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>Shopping</finalName>

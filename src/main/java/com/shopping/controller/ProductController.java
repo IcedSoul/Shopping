@@ -43,7 +43,11 @@ public class ProductController {
         return resultMap;
     }
 
-    //推荐写法
+    /**
+     * 推荐写法
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/deleteProduct", method = RequestMethod.POST)
     @ResponseBody
     public Response deleteProduct(int id) {
