@@ -15,7 +15,7 @@
 						http://www.springframework.org/schema/aop/spring-aop.xsd">
 	
 	<!-- 包扫描 -->
-	<context:component-scan base-package="com.shopping" >
+	<context:component-scan base-package="com.shopping">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 
@@ -84,10 +84,9 @@
 	<bean id="opEMII" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationInterceptor" />
 
 	<!--注意！如果service目录变了，需要改这里的内容，否则会报错-->
-	<!--proxy-target-class 为flase，被代理类是基于jdk的动态代理，如果为true，被代理类基于cglib动态代理-->
-	<aop:config>
+	<aop:config proxy-target-class="true">
 		<aop:advisor pointcut="execution(public * com.shopping.service.*Service.*(..))" advice-ref="txAdvice"/>
-		<!--<aop:advisor advice-ref="opEMII" pointcut="execution(public * com.shopping..*.*(..))"/>-->
+		<aop:advisor advice-ref="opEMII" pointcut="execution(public * com.shopping..*.*(..))"/>
 	</aop:config>
 
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
@@ -104,5 +103,5 @@
 			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
 		</tx:attributes>
 	</tx:advice>
-    <import resource="kieker-aop.xml"/>
+    <!--<import resource="kieker-aop.xml"/>-->
    </beans>
