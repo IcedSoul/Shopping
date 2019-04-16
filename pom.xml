@@ -50,6 +50,12 @@
     <!--这个包不会随spring-webmvc导入，这个包作用是管理Hibernate资源-->
     <dependency>
       <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>4.3.5.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
       <version>4.3.5.RELEASE</version>
     </dependency>
@@ -108,6 +114,8 @@
       <artifactId>druid</artifactId>
       <version>1.1.16</version>
     </dependency>
+
+
 
     <!-- Kieker监听依赖包 -->
     <dependency>

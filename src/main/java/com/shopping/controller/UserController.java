@@ -167,8 +167,9 @@ public class UserController {
     @RequestMapping(value = "/getUserAddressAndPhoneNumber", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> getUserAddressAndPhoneNumber(int id) {
-        String address = userDetailService.getUserDetail(id).getAddress();
-        String phoneNumber = userDetailService.getUserDetail(id).getPhoneNumber();
+        UserDetail userDetail = userDetailService.getUserDetail(id);
+        String address = userDetail.getAddress();
+        String phoneNumber = userDetail.getPhoneNumber();
         Map<String,Object> resultMap = new HashMap<String,Object>();
         resultMap.put("address",address);
         resultMap.put("phoneNumber",phoneNumber);
