@@ -15,8 +15,8 @@
 						http://www.springframework.org/schema/aop/spring-aop.xsd">
 	
 	<!-- 包扫描 -->
-	<context:component-scan base-package="com.shopping">
-		<!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+	<context:component-scan base-package="com.shopping" >
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 
 	<!-- 引入数据库资源文件 -->
@@ -25,12 +25,29 @@
 	</bean>
 
 	<!-- 配置数据源 -->
-	<bean id="dataSource"
-		  class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="${driverClassName}"></property>
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 		<property name="url" value="${url}"></property>
 		<property name="username" value="${userName}"></property>
 		<property name="password" value="${password}"></property>
+
+		<property name="filters" value="stat" />
+
+		<property name="maxActive" value="20" />
+		<property name="initialSize" value="1" />
+		<property name="maxWait" value="60000" />
+		<property name="minIdle" value="1" />
+
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxOpenPreparedStatements" value="20" />
+
+		<property name="asyncInit" value="true" />
 	</bean>
 
 	<!-- AOP -->
@@ -68,9 +85,9 @@
 
 	<!--注意！如果service目录变了，需要改这里的内容，否则会报错-->
 	<!--proxy-target-class 为flase，被代理类是基于jdk的动态代理，如果为true，被代理类基于cglib动态代理-->
-	<aop:config proxy-target-class="true">
+	<aop:config>
 		<aop:advisor pointcut="execution(public * com.shopping.service.*Service.*(..))" advice-ref="txAdvice"/>
-		<aop:advisor advice-ref="opEMII" pointcut="execution(public * com.shopping..*.*(..))"/>
+		<!--<aop:advisor advice-ref="opEMII" pointcut="execution(public * com.shopping..*.*(..))"/>-->
 	</aop:config>
 
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
@@ -87,9 +104,5 @@
 			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
 		</tx:attributes>
 	</tx:advice>
-
-
-
-
-    
+    <import resource="kieker-aop.xml"/>
    </beans>

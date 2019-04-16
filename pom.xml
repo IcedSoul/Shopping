@@ -103,6 +103,12 @@
       <version>2.9.6</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.1.16</version>
+    </dependency>
+
     <!-- Kieker监听依赖包 -->
     <dependency>
       <groupId>aopalliance</groupId>
