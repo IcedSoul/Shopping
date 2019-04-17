@@ -24,13 +24,21 @@
 		<property name="location" value="classpath:properties/database.properties" />
 	</bean>
 
+	<!--<bean id="dataSource"-->
+		  <!--class="org.apache.commons.dbcp2.BasicDataSource">-->
+		<!--<property name="driverClassName" value="${driverClassName}"></property>-->
+		<!--<property name="url" value="${url}"></property>-->
+		<!--<property name="username" value="${userName}"></property>-->
+		<!--<property name="password" value="${password}"></property>-->
+	<!--</bean>-->
+
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 		<property name="url" value="${url}"></property>
 		<property name="username" value="${userName}"></property>
 		<property name="password" value="${password}"></property>
 
-		<property name="filters" value="stat" />
+		<property name="filters" value="stat,log4j2" />
 
 		<property name="maxActive" value="20" />
 		<property name="initialSize" value="1" />
