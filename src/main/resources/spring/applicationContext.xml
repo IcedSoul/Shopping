@@ -38,7 +38,7 @@
 		<property name="username" value="${userName}"></property>
 		<property name="password" value="${password}"></property>
 
-		<property name="filters" value="stat,log4j2" />
+		<property name="filters" value="stat" />
 
 		<property name="maxActive" value="20" />
 		<property name="initialSize" value="1" />
@@ -48,14 +48,15 @@
 		<property name="timeBetweenEvictionRunsMillis" value="60000" />
 		<property name="minEvictableIdleTimeMillis" value="300000" />
 
+		<property name="validationQuery" value="SELECT 'x'" />
 		<property name="testWhileIdle" value="true" />
 		<property name="testOnBorrow" value="false" />
 		<property name="testOnReturn" value="false" />
 
-		<property name="poolPreparedStatements" value="true" />
-		<property name="maxOpenPreparedStatements" value="20" />
+		<!--<property name="poolPreparedStatements" value="true" />-->
+		<!--<property name="maxOpenPreparedStatements" value="20" />-->
 
-		<property name="asyncInit" value="true" />
+		<!--<property name="asyncInit" value="true" />-->
 	</bean>
 
 	<!-- AOP -->
