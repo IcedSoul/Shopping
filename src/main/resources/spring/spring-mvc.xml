@@ -11,7 +11,7 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
   
     <!-- 被扫描的包的路径 -->  
-    <context:component-scan base-package="com.shopping">
+    <context:component-scan base-package="com.shopping" use-default-filters="false">
     	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>

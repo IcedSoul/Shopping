@@ -104,7 +104,7 @@
           var productCounts = document.getElementById("productCounts");
           var counts = parseInt(productCounts.innerHTML);
           var shoppingCar = {};
-          shoppingCar.userId = ${currentUser.id};
+          shoppingCar.userId = "${currentUser.id}";
           shoppingCar.productId = productId;
           shoppingCar.counts = counts;
           var addResult = "";
@@ -155,8 +155,9 @@
       }
 
       function buyConfirm(productId) {
-          var address = getUserAddress(${currentUser.id});
-          var phoneNumber = getUserPhoneNumber(${currentUser.id});
+          judgeIsLogin();
+          var address = getUserAddress("${currentUser.id}");
+          var phoneNumber = getUserPhoneNumber("${currentUser.id}");
           var productCounts = document.getElementById("productCounts");
           var counts = parseInt(productCounts.innerHTML);
           var product = getProductById(productId);
@@ -263,11 +264,10 @@
       }
 
       function addToShoppingRecords(productId) {
-          judgeIsLogin();
           var productCounts = document.getElementById("productCounts");
           var counts = parseInt(productCounts.innerHTML);
           var shoppingRecord = {};
-          shoppingRecord.userId = ${currentUser.id};
+          shoppingRecord.userId = "${currentUser.id}";
           shoppingRecord.productId = productId;
           shoppingRecord.counts = counts;
           var buyResult = "";
@@ -311,7 +311,7 @@
           }
           evaluationTable.innerHTML += html;
 
-          if(getUserProductRecord() == "true"){
+          if("${currentUser}"!="" && getUserProductRecord() == "true"){
               var inputArea = document.getElementById("inputArea");
               html= '<div class="col-sm-12 col-md-12 col-lg-12">'+
                       '<textarea class="form-control" rows="4" id="evaluationText"></textarea>'+
@@ -328,8 +328,8 @@
       function getUserProductRecord() {
           var results = "";
           var product = {};
-          product.userId = ${currentUser.id};
-          product.productId = ${productDetail.id};
+          product.userId = "${currentUser.id}";
+          product.productId = "${productDetail.id}";
           $.ajax({
               async : false, //设置同步
               type : 'POST',
@@ -349,7 +349,7 @@
       function getEvaluations() {
           var evaluations = "";
           var product = {};
-          product.productId = ${productDetail.id};
+          product.productId = "${productDetail.id}";
           $.ajax({
               async : false, //设置同步
               type : 'POST',
@@ -391,8 +391,8 @@
       function addToEvaluation() {
           var inputText = document.getElementById("evaluationText").value;
           var evaluation = {};
-          evaluation.userId = ${currentUser.id};
-          evaluation.productId = ${productDetail.id};
+          evaluation.userId = "${currentUser.id}";
+          evaluation.productId = "${productDetail.id}";
           evaluation.content = inputText;
           var addResult = "";
           $.ajax({

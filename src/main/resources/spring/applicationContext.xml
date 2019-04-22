@@ -71,7 +71,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
+				<!--<prop key="hibernate.format_sql">true</prop>-->
 
 				<prop key="hibernate.cache.use_second_level_cache">false</prop>
 				<prop key="hibernate.cache.use_query_cache">false</prop>
@@ -90,12 +90,18 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="opEMII" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationInterceptor" />
+
+    <!--<bean id="daoBuilder" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationDaoBuilder">-->
+        <!--<property name="sessionFactoryBean" ref="sessionFactory"/>-->
+    <!--</bean>-->
+	<bean id="opEMII" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationInterceptor">
+        <!--<property name="daoBuilderBean" ref="daoBuilder"/>-->
+    </bean>
 
 	<!--注意！如果service目录变了，需要改这里的内容，否则会报错-->
 	<aop:config proxy-target-class="true">
 		<aop:advisor pointcut="execution(public * com.shopping.service.*Service.*(..))" advice-ref="txAdvice"/>
-		<!--<aop:advisor advice-ref="opEMII" pointcut="execution(public * com.shopping..*.*(..))"/>-->
+		<aop:advisor advice-ref="opEMII" pointcut="execution(public * com.shopping..*.*(..))"/>
 	</aop:config>
 
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
@@ -112,5 +118,4 @@
 			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
 		</tx:attributes>
 	</tx:advice>
-    <import resource="kieker-aop.xml"/>
    </beans>
