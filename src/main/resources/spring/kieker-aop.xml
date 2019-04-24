@@ -14,7 +14,9 @@
     <!--<context:component-scan base-package="com.shopping"/>-->
 
     <!-- Kieker's instrumentation probes based on the Spring AOP interception framework -->
-    <bean id="opEMII" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationInterceptor" />
+
+
+    <bean id="opEMII" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationInterceptor"/>
 
     <aop:config proxy-target-class="true">
         <aop:advisor advice-ref="opEMII" pointcut="execution(public * com.shopping..*.*(..))"/>

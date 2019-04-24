@@ -1,7 +1,6 @@
 package com.shopping.dao;
 
 import com.shopping.entity.Evaluation;
-import com.shopping.entity.Product;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;

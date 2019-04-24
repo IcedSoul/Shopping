@@ -62,6 +62,9 @@
 	<!-- AOP -->
 	<aop:aspectj-autoproxy/>
 
+	<!--<bean id="sqlInterceptor" class="com.shopping.interceptor.SqlInterceptor">-->
+	<!--</bean>-->
+
 	<!-- 配置 hibernate session -->
 	<bean id="sessionFactory"
 		  class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -84,6 +87,7 @@
 				<value>com.shopping.entity</value>
 			</list>
 		</property>
+		<!--<property name="entityInterceptor" ref="sqlInterceptor" />-->
 	</bean>
 
 	<!-- 配置事务管理器 -->
@@ -91,12 +95,15 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-    <!--<bean id="daoBuilder" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationDaoBuilder">-->
-        <!--<property name="sessionFactoryBean" ref="sessionFactory"/>-->
-    <!--</bean>-->
-	<bean id="opEMII" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationInterceptor">
-        <!--<property name="daoBuilderBean" ref="daoBuilder"/>-->
+    <bean id="daoBuilder" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationHibernateDaoBuilder">
+        <property name="sessionFactoryBean" ref="sessionFactory"/>
     </bean>
+
+	<bean id="opEMII" class="kieker.monitoring.probe.spring.executions.OperationExecutionMethodInvocationInterceptor">
+        <property name="hibernateDaoBuilder" ref="daoBuilder"/>
+    </bean>
+
+
 
 	<!--注意！如果service目录变了，需要改这里的内容，否则会报错-->
 	<aop:config proxy-target-class="true">

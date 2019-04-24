@@ -8,6 +8,16 @@
   <name>Shopping</name>
   <url>http://maven.apache.org</url>
 
+  <repositories>
+    <repository>
+      <id>jsqlparser-snapshots</id>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -199,11 +209,24 @@
     </dependency>
 
     <dependency>
-      <groupId>net.kieker-monitoring</groupId>
+      <groupId>cn.icedsoul</groupId>
       <artifactId>kieker</artifactId>
-      <version>1.13</version>
+      <version>1.0</version>
       <scope>runtime</scope>
     </dependency>
+
+    <dependency>
+      <groupId>com.github.jsqlparser</groupId>
+      <artifactId>jsqlparser</artifactId>
+      <version>1.4</version>
+    </dependency>
+
+    <!--<dependency>-->
+      <!--<groupId>net.kieker-monitoring</groupId>-->
+      <!--<artifactId>kieker</artifactId>-->
+      <!--<version>1.13</version>-->
+      <!--<scope>runtime</scope>-->
+    <!--</dependency>-->
 
   </dependencies>
   <build>
