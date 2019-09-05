@@ -13,9 +13,8 @@ git clone https://github.com/IcedSoul/Shopping.git
 
 # 3.打开Shopping/src/main/resources/properties/路径下的database.properties配置文件，把数据库连接地址，用户名和密码改成自己的
 
-# 4.执行以下maven命令（需本地安装Maven）
-mvn clean
-mvn package
+# 4.执行以下maven命令（需本地安装Maven）,需要进入项目文件夹，然后执行下面命令
+mvn clean package -DskipTests
 
 # 5.在生成的target目录下可找到Shopping.war包
 
