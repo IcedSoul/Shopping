@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.6
+    ports:
+      - 3306
+    command: [
+      --character-set-server=utf8mb4,
+      --collation-server=utf8mb4_unicode_ci
+    ]
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: shopping
+#    volumes:
+#      - ../../user-relation-mysql/data:/var/lib/mysql
+    networks:
+      - shopping-network
+
+  shopping:
+    build: ./
+    image: icedsoul/shopping
+    depends_on:
+      - mysql
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - shopping-network
+
+networks:
+  shopping-network:
+    driver: bridge

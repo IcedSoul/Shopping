@@ -1,73 +1,3 @@
-create database shopping;
-
-use shopping;
-create table user_main(
-	id int not null,
-	name varchar(30) not null,
-	email varchar(50) not null,
-	nick_name varchar(30) not null,
-	role int not null,
-	primary key(id),
-	unique(name),
-	unique(email)
-);
-
-create table user_detail(
-	id int not null,
-	password varchar(20) not null,
-	phone_number varchar(20) not null,
-	sex int not null,
-	birthday varchar(20) not null,
-	post_number varchar(10) not null,
-	address varchar(50) not null,
-	register_time varchar(20) not null,
-	primary key(id),
-	foreign key(id) references user_main(id)
-);
-
-create table products(
-	id int not null,
-	name varchar(50) not null,
-	description varchar(1000) not null,
-	key_word varchar(1000) not null,
-	price int not null,
-	counts int not null,
-	type int not null,
-	primary key(id),
-	unique(name)
-);
-
-create table shopping_car(
-	user_id int not null,
-	product_id int not null,
-	product_price int not null,
-	counts int not null,
-	primary key (user_id,product_id),
-	foreign key (user_id) references user_main(id),
-	foreign key (product_id) references products(id)
-);
-
-create table shopping_record(
-	user_id int not null,
-	product_id int not null,
-	time varchar(20) not null,
-	order_status int not null,
-	product_price int not null,
-	counts int not null,
-	primary key (user_id,product_id,time),
-	foreign key (user_id) references user_main(id),
-	foreign key (product_id) references products(id)
-);
-
-create table evaluation(
-	user_id int not null,
-	product_id int not null,
-	time varchar(20) not null,
-	content varchar(1000) not null,
-	primary key (user_id,product_id,time),
-	foreign key (user_id) references user_main(id),
-	foreign key (product_id) references products(id)
-);
 
 INSERT INTO `products`(`id`, `name`, `description`, `key_word`, `price`, `counts`, `type`) VALUES (1, '酒吞童子', 'SSR！全新的SSR！', '阴阳师;游戏;网易', 199, 200000, 4);
 INSERT INTO `products`(`id`, `name`, `description`, `key_word`, `price`, `counts`, `type`) VALUES (2, '古剑奇谭二', '国产单机游戏，阿阮我的！', '单机游戏;国产;古剑', 69, 100000, 4);
@@ -78,3 +8,9 @@ INSERT INTO `products`(`id`, `name`, `description`, `key_word`, `price`, `counts
 INSERT INTO `products`(`id`, `name`, `description`, `key_word`, `price`, `counts`, `type`) VALUES (7, '苹果笔记本', '办公必备', '苹果;笔记本', 19999, 100000, 2);
 INSERT INTO `products`(`id`, `name`, `description`, `key_word`, `price`, `counts`, `type`) VALUES (8, '化妆品', '比ps好用，你信不', '化妆品', 1999, 10000, 6);
 INSERT INTO `products`(`id`, `name`, `description`, `key_word`, `price`, `counts`, `type`) VALUES (9, '足球', '圆圆的，白白的，会滚，一斤三块？要不，来两斤？', '足球;运动', 199, 100000, 7);
+
+INSERT INTO `user_main`(`id`, `name`, `email`, `nick_name`, `role`) VALUES (1, 'admin', 'admin@abc.com', 'admin', 0);
+INSERT INTO `user_main`(`id`, `name`, `email`, `nick_name`, `role`) VALUES (2, 'user1', 'user1@abc.com', 'user1', 0);
+
+INSERT INTO `user_detail`(`id`, `password`, `phone_number`, `sex`, `birthday`, `post_number`, `address`, `register_time`) VALUES (1, 'admin', '12345677654', 0, '2000/01/01', '000000', '地球', '2020-01-01 00:00:00');
+INSERT INTO `user_detail`(`id`, `password`, `phone_number`, `sex`, `birthday`, `post_number`, `address`, `register_time`) VALUES (2, '123', '11111111111', 0, '2000/01/01', '000000', '地球', '2020-01-01 00:00:00');
