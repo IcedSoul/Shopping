@@ -9,7 +9,7 @@ INSERT INTO `products`(`id`, `name`, `description`, `key_word`, `price`, `counts
 INSERT INTO `products`(`id`, `name`, `description`, `key_word`, `price`, `counts`, `type`) VALUES (8, '化妆品', '比ps好用，你信不', '化妆品', 1999, 10000, 6);
 INSERT INTO `products`(`id`, `name`, `description`, `key_word`, `price`, `counts`, `type`) VALUES (9, '足球', '圆圆的，白白的，会滚，一斤三块？要不，来两斤？', '足球;运动', 199, 100000, 7);
 
-INSERT INTO `user_main`(`id`, `name`, `email`, `nick_name`, `role`) VALUES (1, 'admin', 'admin@abc.com', 'admin', 0);
+INSERT INTO `user_main`(`id`, `name`, `email`, `nick_name`, `role`) VALUES (1, 'admin', 'admin@abc.com', 'admin', 1);
 INSERT INTO `user_main`(`id`, `name`, `email`, `nick_name`, `role`) VALUES (2, 'user1', 'user1@abc.com', 'user1', 0);
 
 INSERT INTO `user_detail`(`id`, `password`, `phone_number`, `sex`, `birthday`, `post_number`, `address`, `register_time`) VALUES (1, 'admin', '12345677654', 0, '2000/01/01', '000000', '地球', '2020-01-01 00:00:00');
