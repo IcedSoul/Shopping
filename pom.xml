@@ -44,7 +44,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>4.3.5.RELEASE</version>
+      <version>5.2.20.RELEASE</version>
     </dependency>
 
     <!--这个包不会随spring-webmvc导入，这个包作用是管理Hibernate资源-->
