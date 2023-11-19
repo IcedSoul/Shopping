@@ -43,6 +43,19 @@ public class ShoppingRecordController {
         System.out.println("我添加了"+userId+" "+productId);
         String result = null;
         Product product = productService.getProduct(productId);
+        
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        if (counts < 0) {
+            // Handle negative counts
+            resultMap.put("result", "badInput");
+            return resultMap;
+        } else if (counts > 0 && price > Integer.MAX_VALUE / counts) {
+            // Handle overflow
+            resultMap.put("result", "badInput");
+            return resultMap;
+        }
+
+
         if(counts<=product.getCounts()) {
             ShoppingRecord shoppingRecord = new ShoppingRecord();
             shoppingRecord.setUserId(userId);
@@ -61,7 +74,6 @@ public class ShoppingRecordController {
         else{
             result = "unEnough";
         }
-        Map<String,Object> resultMap = new HashMap<String,Object>();
         resultMap.put("result",result);
         return resultMap;
     }

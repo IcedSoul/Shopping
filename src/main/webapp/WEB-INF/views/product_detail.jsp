@@ -296,6 +296,9 @@
           else if(buyResult === "unEnough"){
               layer.alert("库存不足，购买失败")
           }
+          else if(buyResult === "badInput"){
+              layer.alert("非法输入")
+          }
       }
 
       function listEvaluations() {
